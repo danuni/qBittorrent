@@ -55,4 +55,11 @@ build_script:
   - qmake qbittorrent.pro && cd src && qmake src.pro
   - jom -j2 -f Makefile.Release
 
+after_build:
+  - 7z a QBittorrent.zip %APPVEYOR_BUILD_FOLDER%\src\release\qbittorrent.exe
+
 test: off
+
+artifacts:
+  - path: QBittorrent.zip
+    name: QBittorrent
