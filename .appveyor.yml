@@ -56,10 +56,11 @@ build_script:
   - jom -j2 -f Makefile.Release
 
 after_build:
-  - 7z a %APPVEYOR_BUILD_FOLDER%\src\release\QBittorrent.zip   %APPVEYOR_BUILD_FOLDER%\src\release\qbittorrent.exe
+#  - 7z a %APPVEYOR_BUILD_FOLDER%\src\release\QBittorrent.7z   %APPVEYOR_BUILD_FOLDER%\src\release\qbittorrent.exe
+  - 7z a -mx=9 -m0=BCJ2 -m1=LZMA2 %APPVEYOR_BUILD_FOLDER%\src\release\QBittorrent.7z   %APPVEYOR_BUILD_FOLDER%\src\release\qbittorrent.exe
 
 test: off
 
 artifacts:
-  - path: src\release\QBittorrent.zip
+  - path: src\release\QBittorrent.7z
     name: QBittorrent
